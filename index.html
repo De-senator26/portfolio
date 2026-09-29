@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tombir Anslem Swengka | Software Engineer</title>
+<meta name="description" content="Portfolio of Tombir Anslem Swengka, software engineer and IT technician in Yaoundé, Cameroon.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #eef2ea;
+  --ink: #1b2f26;
+  --muted: #55665c;
+  --line: #c9d3c3;
+  --panel: #e2e9dc;
+  --accent: #e0a800;
+  --link: #14573a;
+  --display: "Bricolage Grotesque", "Trebuchet MS", system-ui, sans-serif;
+  --body: "Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+:root:not([data-theme="light"]) { color-scheme: light dark; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #12201a; --ink: #e6eee2; --muted: #9fb0a5; --line: #2b4136;
+    --panel: #192b22; --accent: #f0be2a; --link: #8fd4a8;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #12201a; --ink: #e6eee2; --muted: #9fb0a5; --line: #2b4136;
+  --panel: #192b22; --accent: #f0be2a; --link: #8fd4a8;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+}
+a { color: var(--link); text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible, summary:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.layout {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: grid;
+  grid-template-columns: 300px minmax(0, 1fr);
+  gap: 4rem;
+}
+
+/* Sidebar */
+.side {
+  position: sticky;
+  top: 0;
+  align-self: start;
+  height: 100vh;
+  padding: 4rem 0 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.avatar {
+  display: block;
+  width: 132px;
+  height: 132px;
+  margin-bottom: 1.5rem;
+  border-radius: 50%;
+  border: 3px solid var(--accent);
+  overflow: hidden;
+}
+.avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.name {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(2.3rem, 4vw, 3.2rem);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  margin: 0 0 1rem;
+}
+.role { margin: 0; color: var(--muted); max-width: 26ch; }
+.nav { margin-top: 2.5rem; display: grid; gap: .2rem; }
+.nav a {
+  color: var(--ink);
+  text-decoration: none;
+  padding: .3rem 0 .3rem 1rem;
+  border-left: 2px solid var(--line);
+  font-weight: 500;
+}
+.nav a:hover, .nav a[aria-current="true"] {
+  border-left-color: var(--accent);
+  border-left-width: 4px;
+  padding-left: calc(1rem - 2px);
+}
+.side-foot { display: grid; gap: .5rem; font-size: .95rem; justify-items: start; }
+.theme-btn {
+  font: inherit;
+  background: none;
+  border: 1px solid var(--line);
+  color: var(--ink);
+  padding: .3rem .8rem;
+  border-radius: 999px;
+  cursor: pointer;
+  margin-top: .5rem;
+}
+.theme-btn:hover { border-color: var(--ink); }
+
+/* Main */
+main { padding: 4rem 0 5rem; }
+section { padding: 0 0 4.5rem; scroll-margin-top: 3rem; }
+h2 {
+  font-family: var(--display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin: 0 0 1.5rem;
+  padding-bottom: .6rem;
+  border-bottom: 1px solid var(--line);
+}
+.lead {
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: clamp(1.8rem, 3.6vw, 2.75rem);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin: 0 0 1.5rem;
+  max-width: 24ch;
+}
+.prose { max-width: 62ch; margin: 0 0 1rem; }
+.actions { display: flex; gap: .75rem; flex-wrap: wrap; margin-top: 2rem; }
+.btn {
+  display: inline-block;
+  padding: .7rem 1.2rem;
+  border: 2px solid var(--ink);
+  color: var(--ink);
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 6px;
+}
+.btn.primary { background: var(--ink); color: var(--bg); }
+.btn:hover { background: var(--accent); border-color: var(--accent); color: #1b2f26; }
+
+/* Experience & education entries */
+.entry { margin-bottom: 1.5rem; }
+.entry h3 { font-family: var(--display); font-size: 1.35rem; margin: 0; letter-spacing: -0.01em; }
+.entry .when { color: var(--muted); margin: 0 0 1rem; }
+.entry ul { margin: 0; padding-left: 1.2rem; max-width: 62ch; }
+.entry li { margin-bottom: .5rem; }
+
+/* Projects */
+.project { border-bottom: 1px solid var(--line); }
+.project:first-of-type { border-top: 1px solid var(--line); }
+.project summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 1.4rem 0;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: .25rem 1.5rem;
+  align-items: baseline;
+}
+.project summary::-webkit-details-marker { display: none; }
+.project h3 { font-family: var(--display); font-size: 1.5rem; margin: 0; letter-spacing: -0.01em; }
+.project .meta { color: var(--muted); font-size: .95rem; margin: 0; grid-column: 1; }
+.project .toggle { grid-row: 1; grid-column: 2; font-size: 1.6rem; line-height: 1; transition: transform .2s ease; }
+.project[open] .toggle { transform: rotate(45deg); }
+.project summary:hover h3 { text-decoration: underline; text-decoration-color: var(--accent); text-decoration-thickness: 3px; text-underline-offset: 5px; }
+.project .body { padding: 0 0 1.75rem; max-width: 62ch; }
+.tags { list-style: none; padding: 0; margin: 1rem 0 0; display: flex; gap: .5rem; flex-wrap: wrap; }
+.tags li { background: var(--panel); padding: .15rem .7rem; border-radius: 4px; font-size: .9rem; }
+
+/* Skills */
+.skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2rem; margin: 0; }
+.skills dt { font-family: var(--display); font-weight: 700; margin-bottom: .4rem; }
+.skills dd { margin: 0; color: var(--muted); }
+
+/* Contact */
+.contact-list { display: grid; grid-template-columns: max-content 1fr; gap: .6rem 2rem; margin: 0; }
+.contact-list dt { color: var(--muted); }
+.contact-list dd { margin: 0; }
+.mail {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(1.3rem, 3vw, 1.9rem);
+  letter-spacing: -0.02em;
+  word-break: break-word;
+}
+
+footer { color: var(--muted); font-size: .9rem; padding-top: 1rem; }
+
+@media (max-width: 860px) {
+  .layout { grid-template-columns: 1fr; gap: 0; }
+  .side { position: static; height: auto; padding: 2.5rem 0 0; gap: 1.5rem; }
+  .nav { margin-top: 1.5rem; display: flex; flex-wrap: wrap; gap: .5rem 1.25rem; }
+  .nav a { border-left: 0; padding: .25rem 0; border-bottom: 2px solid var(--line); }
+  .nav a:hover, .nav a[aria-current="true"] { border-left: 0; padding-left: 0; border-bottom-color: var(--accent); }
+  .side-foot { margin-top: 1.5rem; }
+  main { padding-top: 3rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .project .toggle { transition: none; }
+}
+</style>
+</head>
+<body>
+<div class="layout">
+
+  <header class="side">
+    <div>
+      <a class="avatar" href="#projects" aria-label="View my portfolio projects">
+        <img src="profile.jpg" alt="Portrait of Tombir Anslem Swengka" width="132" height="132">
+      </a>
+      <h1 class="name">Tombir Anslem Swengka</h1>
+      <p class="role">Software Engineer and IT Technician based in Yaoundé, Cameroon.</p>
+      <nav class="nav" aria-label="Sections">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+    <div class="side-foot">
+      <a href="mailto:swengkaanslem@gmail.com">swengkaanslem@gmail.com</a>
+      <a href="tel:+237670466593">+237 670 466 593</a>
+      <button class="theme-btn" id="theme" type="button" aria-label="Switch colour theme">Switch theme</button>
+    </div>
+  </header>
+
+  <main>
+    <section id="about">
+      <h2>About</h2>
+      <p class="lead">I build practical software for local needs.</p>
+      <p class="prose">
+        I'm a software engineering graduate and IT technician in Yaoundé with hands-on experience in full-stack
+        application development, database management, and hardware infrastructure support.
+      </p>
+      <p class="prose">
+        I like building practical, localized software, from the MBOA FLIX platform to Java desktop applications
+        and web systems. I troubleshoot technical problems, manage networks, and develop scalable web and desktop
+        systems with a strong analytical and problem-solving mindset.
+      </p>
+      <div class="actions">
+        <a class="btn primary" href="#projects">See my work</a>
+        <a class="btn" href="#contact">Get in touch</a>
+        <!-- Optional: put your CV as cv.pdf next to this file, then uncomment -->
+        <!-- <a class="btn" href="cv.pdf">Download CV</a> -->
+      </div>
+    </section>
+
+    <section id="experience">
+      <h2>Experience</h2>
+      <article class="entry">
+        <h3>Software Engineer / IT Technician</h3>
+        <p class="when">October 2023 to present</p>
+        <ul>
+          <li>Install and perform minor repairs to hardware, software, and peripheral equipment following installation specifications.</li>
+          <li>Design and manage database applications, including interfaces, data transfer mechanisms, temporary tables, and optimized database structures.</li>
+          <li>Direct installation and configuration of operating systems, application software, and computer and network hardware.</li>
+          <li>Maintain and administer computer networks and related computing environments.</li>
+          <li>Diagnose and troubleshoot system, software, and network-related issues efficiently.</li>
+          <li>Develop practical software applications tailored to local business and user needs.</li>
+        </ul>
+      </article>
+    </section>
+
+    <section id="projects">
+      <h2>Projects</h2>
+
+      <details class="project" open>
+        <summary>
+          <h3>Smart Farmer Marketplace</h3>
+          <span class="toggle" aria-hidden="true">+</span>
+          <p class="meta">Agricultural e-commerce platform for Cameroon</p>
+        </summary>
+        <div class="body">
+          <p>
+            An online marketplace where farmers can list produce and buyers can browse and order,
+            built as an academic internship project. It is a responsive, database-driven web application.
+          </p>
+          <ul class="tags">
+            <li>PHP</li><li>MySQL</li><li>CSS</li><li>JavaScript</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="project">
+        <summary>
+          <h3>MBOA FLIX Platform</h3>
+          <span class="toggle" aria-hidden="true">+</span>
+          <p class="meta">Localized digital platform for entertainment services</p>
+        </summary>
+        <div class="body">
+          <p>
+            A localized software platform designed to provide practical digital solutions and entertainment
+            services for its users.
+          </p>
+        </div>
+      </details>
+
+      <details class="project">
+        <summary>
+          <h3>Java Desktop Applications</h3>
+          <span class="toggle" aria-hidden="true">+</span>
+          <p class="meta">Custom desktop software with database integration</p>
+        </summary>
+        <div class="body">
+          <p>
+            Custom desktop applications built with Java, with database integration and user-friendly interfaces.
+          </p>
+          <ul class="tags">
+            <li>Java</li><li>MySQL</li>
+          </ul>
+        </div>
+      </details>
+    </section>
+
+    <section id="skills">
+      <h2>Skills</h2>
+      <dl class="skills">
+        <div><dt>Programming languages</dt><dd>Java, Python, PHP</dd></div>
+        <div><dt>Web development</dt><dd>MERN stack, HTML, CSS, JavaScript, responsive UI design</dd></div>
+        <div><dt>Databases</dt><dd>MySQL, MongoDB</dd></div>
+        <div><dt>Networking and IT support</dt><dd>Network troubleshooting, system maintenance, hardware support</dd></div>
+        <div><dt>Software development</dt><dd>Java desktop applications, full-stack web applications</dd></div>
+      </dl>
+    </section>
+
+    <section id="education">
+      <h2>Education</h2>
+      <article class="entry">
+        <h3>Kelden University Institute, Yaoundé</h3>
+        <p class="when">Bachelor of Science in Software Engineering, graduate</p>
+      </article>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <p class="prose">I'm open to software engineering and IT roles. Email is the best way to reach me.</p>
+      <p><a class="mail" href="mailto:swengkaanslem@gmail.com">swengkaanslem@gmail.com</a></p>
+      <dl class="contact-list">
+        <dt>Phone</dt><dd><a href="tel:+237670466593">+237 670 466 593</a></dd>
+        <dt>Location</dt><dd>Yaoundé, Cameroon</dd>
+      </dl>
+    </section>
+
+    <footer>&copy; <span id="year"></span> Tombir Anslem Swengka</footer>
+  </main>
+</div>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  var root = document.documentElement;
+  try {
+    var saved = localStorage.getItem("theme");
+    if (saved) root.setAttribute("data-theme", saved);
+  } catch (e) {}
+  document.getElementById("theme").addEventListener("click", function () {
+    var dark = root.getAttribute("data-theme") === "dark" ||
+      (!root.getAttribute("data-theme") && matchMedia("(prefers-color-scheme: dark)").matches);
+    var next = dark ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    try { localStorage.setItem("theme", next); } catch (e) {}
+  });
+
+  var links = document.querySelectorAll(".nav a");
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) {
+      if (en.isIntersecting) {
+        links.forEach(function (a) {
+          a.setAttribute("aria-current", a.getAttribute("href") === "#" + en.target.id ? "true" : "false");
+        });
+      }
+    });
+  }, { rootMargin: "-35% 0px -55% 0px" });
+  document.querySelectorAll("main section").forEach(function (s) { io.observe(s); });
+</script>
+</body>
+</html>
